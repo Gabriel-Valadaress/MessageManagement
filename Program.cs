@@ -1,3 +1,5 @@
+using MessageManagement.Data;
+using MessageManagement.Models;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
@@ -101,21 +103,3 @@ app.MapDelete("/messages/{id}", async (int id, AppDbContext db) =>
 });
 
 app.Run();
-
-class Message
-{
-    public int Id { get; set; }
-    public string? Email { get; set; }
-    public string? Text { get; set; }
-    public DateTime Date { get; set; }
-}
-
-
-class AppDbContext : DbContext
-{
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
-    {
-    }
-
-    public DbSet<Message> Messages => Set<Message>();
-}
